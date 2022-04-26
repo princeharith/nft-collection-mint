@@ -32,7 +32,6 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
 
     modifier onlyWhenNotPaused() {
         require(!_paused, "Contract currently paused");
-        //what is this underscore?
         _;
     }
 
@@ -62,7 +61,7 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
             "Presale not running"
         );
         require(
-            whitelist.whiteListedAddresses(msg.sender),
+            whitelist.whitelistedAddresses(msg.sender),
             "You aren't whitelisted"
         );
         require(tokenIds < maxTokenIds, "No more NFTs available");

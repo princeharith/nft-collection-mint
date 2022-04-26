@@ -6,11 +6,12 @@ import { abi, NFT_CONTRACT_ADDRESS } from "../constants";
 import styles from "../styles/Home.module.css";
 
 
+
 export default function Home() {
     //this keeps track of whether user's wallet connected or not
     const [walletConnected, setWalletConnected] = useState(false);
 
-    //presaleStarted keeps tracj of whether it has started or not
+    //presaleStarted keeps track of whether it has started or not
     const [presaleStarted, setPresaleStarted] = useState(false);
 
     const [presaleEnded, setPresaleEnded] = useState(false);
@@ -117,10 +118,16 @@ export default function Home() {
             const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
             // call the presaleStarted from the contract
             const _presaleStarted = await nftContract.presaleStarted();
+
+            
+
             if (!_presaleStarted) {
-            await getOwner();
+                await getOwner();
+                console.log(isOwner);
             }
             setPresaleStarted(_presaleStarted);
+            
+            
             return _presaleStarted;
         } catch (err) {
             console.error(err);
@@ -173,6 +180,8 @@ export default function Home() {
             if (address.toLowerCase() == _owner.toLowerCase()){
                 setIsOwner(true);
             }
+
+            
         } catch (err){
             console.log(err);
         }
@@ -215,12 +224,15 @@ export default function Home() {
         }
         return web3Provider;
         };
-        
+
 
 
     //effect change for when value of wallet connected changes
 
+    
+
     useEffect(() => {
+        console.log("Initial" + presaleStarted);
         if (!walletConnected) {
             web3ModalRef.current = new Web3Modal({
                 network: "ropsten",
@@ -237,12 +249,13 @@ export default function Home() {
 
             getTokenIDsMinted();
 
+
             //interval every 5 secs that checks if presale ended
             const presaleEndedInterval = setInterval(async function() {
                 const _presaleStarted = await checkIfPresaleStarted();
                 if (_presaleStarted) {
                     const _presaleEnded = await checkIfPresaleEnded();
-                    if (presaleEnded) {
+                    if (_presaleEnded) {
                         clearInterval(presaleEndedInterval);
                     }
                     }
@@ -254,8 +267,12 @@ export default function Home() {
         }
     }, [walletConnected]);
 
+    
+
 
     const renderButton = () => {
+        //console.log("has preSale Started? " + presaleStarted);
+        //console.log("has presale Ended? " + presaleEnded);
         if (!walletConnected) {
             return (
                 <button onClick={connectWallet} className={styles.button}>
@@ -289,10 +306,10 @@ export default function Home() {
                 <div>
                 <div className={styles.description}>
                     Presale has started!!! If your address is whitelisted, Mint a
-                    Crypto Dev 🥳
+                    Crypto Dev
                 </div>
                 <button className={styles.button} onClick={presaleMint}>
-                    Presale Mint 🚀
+                    Presale Mint
                 </button>
                 </div>
             );
@@ -301,7 +318,7 @@ export default function Home() {
         if (presaleStarted && presaleEnded){
             return (
                 <button className={styles.button} onClick={publicMint}>
-                    Public Mint!!
+                    Public Mint!
                 </button>
             );
         }
@@ -315,10 +332,10 @@ export default function Home() {
                 <meta name="description" content="Whitelist-Dapp" />
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <div>
+            <div className={styles.main}>
                 <h1 className={styles.title}>Welcome to Crypto Devs!</h1>
                 <div className={styles.description}>
-                    This is an NFT collection for fellow devs in Crypto!
+                    An NFT collection for my fellow Crypto Developers
                 </div>
                 <div className={styles.description}>
                     {tokenIdsMinted}/20 have been minted
@@ -335,5 +352,3 @@ export default function Home() {
     );
 
 }
-
-
