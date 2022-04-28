@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./IWhitelist.sol";
 
-contract CryptoDevs is ERC721Enumerable, Ownable {
+contract PlayerTraderNFT is ERC721Enumerable, Ownable {
     /**
     _baseTokenURI for computing {tokenURI}. If set, the resulting URI
     for each token will be concat. of 'baseURI' and 'tokenID'
@@ -37,12 +37,12 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
 
     /**
     @dev ERC721 constructor takes in 'name' and 'symbol'
-    CryptoDevs constructor take sin baseURI to set _baseTokenURI for collection
+    PlayerTraderNFT constructor take sin baseURI to set _baseTokenURI for collection
     and initializes an instance of whitelist interface
     */
 
     constructor(string memory baseURI, address whiteListContract)
-        ERC721("CryptoDevs", "CD")
+        ERC721("PlayerTraderNFT", "PT")
     {
         _baseTokenURI = baseURI;
         whitelist = IWhitelist(whiteListContract);

@@ -12,17 +12,17 @@ async function main() {
     //contract factory is an abstraction to deploy new smart contracts
     //this is a factory instance of our CryptoDev NFT
 
-    const crpyotDevsContract = await ethers.getContractFactory("CryptoDevs");
+    const nftContract = await ethers.getContractFactory("PlayerTraderNFT");
 
     //deploy the contract
-    const deployedCryptoDevsContract = await crpyotDevsContract.deploy(
+    const deployedNftContract = await nftContract.deploy(
         metadataURL,
         whitelistContract
     );
 
     console.log(
         "contract deployed to",
-        deployedCryptoDevsContract.address
+        deployedNftContract.address
     );
 }
 
