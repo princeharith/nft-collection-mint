@@ -213,9 +213,9 @@ export default function Home() {
     
         // If user is not connected to the Rinkeby network, let them know and throw an error
         const { chainId } = await web3Provider.getNetwork();
-        if (chainId !== 3) {
-            window.alert("Change the network to Ropsten");
-            throw new Error("Change network to Ropsten");
+        if (chainId !== 80001) {
+            window.alert("Change the network to Polygon");
+            throw new Error("Change network to Polygon");
         }
     
         if (needSigner) {
@@ -235,7 +235,7 @@ export default function Home() {
         console.log("Initial" + presaleStarted);
         if (!walletConnected) {
             web3ModalRef.current = new Web3Modal({
-                network: "ropsten",
+                network: "mumbai",
                 providerOptions: {},
                 disableInjectedProvider: false,
             });
