@@ -318,7 +318,7 @@ export default function Home() {
         if (presaleStarted && presaleEnded){
             return (
                 <button className={styles.button} onClick={publicMint}>
-                    Public Mint!
+                    Public Mint
                 </button>
             );
         }
@@ -328,26 +328,25 @@ export default function Home() {
     return (
         <div>
             <Head>
-                <title>Crypto Devs</title>
+                <title>PT NFT Minter</title>
                 <meta name="description" content="Whitelist-Dapp" />
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <div className={styles.main}>
-                <h1 className={styles.title}>Welcome to Crypto Devs!</h1>
-                <div className={styles.description}>
-                    An NFT collection for my fellow Crypto Developers
+                <div>
+                    <h1 className={styles.title}>PlayerTrader NFT Minter</h1>
+                    {/* <div className={styles.description}>
+                        An NFT collection for my fellow Crypto Developers
+                    </div> */}
+                    {/* <div className={styles.description}>
+                        {tokenIdsMinted}/20 PT NFTs have been minted so far
+                    </div> */}
+                    <div className={styles.container}>
+                    {renderButton()}
+                    </div>
                 </div>
-                <div className={styles.description}>
-                    {tokenIdsMinted}/20 have been minted
-                </div>
-                {renderButton()}
             </div>
-            <div>
-                <img className={styles.image} src="./cryptodevs/0.svg" />
-            </div>
-            <footer className={styles.footer}>
-                Made with &#10084; by Crypto Devs
-            </footer>
+            <img className={styles.image} src="./Social2.png" />
         </div>
     );
 

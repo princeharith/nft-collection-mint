@@ -1,47 +1,56 @@
 .main {
-  min-height: 90vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
+  overflow: hidden;
 }
 
 .footer {
-  display: flex;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  position: relative;
   justify-content: center;
-  align-items: center;
+  vertical-align: middle;
 }
 
 .image {
-  width: 70%;
-  height: 50%;
-  margin-left: 20%;
+  position: relative;
+  top: -100px;
+  width: 25%;
+  height: 30%;
+  left: 37.5%;
 }
 
 .title {
   font-size: 2rem;
   margin: 2rem 0;
+  padding-bottom: 20%;
 }
 
 .description {
   line-height: 1;
   margin: 2rem 0;
   font-size: 1.2rem;
+  padding-top: ;
+}
+
+.container {
+  text-align: center;
 }
 
 .button {
   border-radius: 4px;
-  background-color: blue;
+  background-color: rgba(2,184,110,255);
   border: none;
   color: #ffffff;
   font-size: 15px;
+  text-align: center;
   padding: 20px;
   width: 200px;
+  left: 200%;
   cursor: pointer;
-  margin-bottom: 2%;
+
 }
 @media (max-width: 1000px) {
   .main {
