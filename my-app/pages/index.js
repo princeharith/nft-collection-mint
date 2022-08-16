@@ -258,29 +258,29 @@ export default function Home() {
             });
             connectWallet();
 
-            //check presale
-            const _presaleStarted = checkIfPresaleStarted();
-            if (_presaleStarted) {
-                checkIfPresaleEnded();
-            }
+            // //check presale
+            // const _presaleStarted = checkIfPresaleStarted();
+            // if (_presaleStarted) {
+            //     checkIfPresaleEnded();
+            // }
 
-            getTokenIDsMinted();
+            // getTokenIDsMinted();
 
 
-            //interval every 5 secs that checks if presale ended
-            const presaleEndedInterval = setInterval(async function() {
-                const _presaleStarted = await checkIfPresaleStarted();
-                if (_presaleStarted) {
-                    const _presaleEnded = await checkIfPresaleEnded();
-                    if (_presaleEnded) {
-                        clearInterval(presaleEndedInterval);
-                    }
-                    }
-                }, 5 * 1000);
+            // //interval every 5 secs that checks if presale ended
+            // const presaleEndedInterval = setInterval(async function() {
+            //     const _presaleStarted = await checkIfPresaleStarted();
+            //     if (_presaleStarted) {
+            //         const _presaleEnded = await checkIfPresaleEnded();
+            //         if (_presaleEnded) {
+            //             clearInterval(presaleEndedInterval);
+            //         }
+            //         }
+            //     }, 5 * 1000);
 
-            setInterval(async function() {
-                await getTokenIDsMinted();
-            }, 5*1000);
+            // setInterval(async function() {
+            //     await getTokenIDsMinted();
+            // }, 5*1000);
         }
     }, [walletConnected]);
 
@@ -298,41 +298,42 @@ export default function Home() {
             );
         }
     
-        if (loading) {
-            return <button className={styles.button}>Loading...</button>;
-        }
+        // if (loading) {
+        //     return <button className={styles.button}>Loading...</button>;
+        // }
 
-        if (isOwner && !presaleStarted) {
-            return (
-                <button className={styles.button} onClick={startPresale}>
-                    Start Presale!
-                </button>
-            );
-        }
+        // if (isOwner && !presaleStarted) {
+        //     return (
+        //         <button className={styles.button} onClick={startPresale}>
+        //             Start Presale!
+        //         </button>
+        //     );
+        // }
 
-        if (!presaleStarted) {
-            return (
-                <div>
-                    <div className={styles.description}>Presale hasn't started</div>
-                </div>
-            );
-        }
+        // if (!presaleStarted) {
+        //     return (
+        //         <div>
+        //             <div className={styles.description}>Presale hasn't started</div>
+        //         </div>
+        //     );
+        // }
 
-        if (presaleStarted && !presaleEnded) {
-            return (
-                <div>
-                <div className={styles.description}>
-                    Presale has started!!! If your address is whitelisted, Mint a
-                    Crypto Dev
-                </div>
-                <button className={styles.button} onClick={presaleMint}>
-                    Presale Mint
-                </button>
-                </div>
-            );
-            }
+        // if (presaleStarted && !presaleEnded) {
+        //     return (
+        //         <div>
+        //         <div className={styles.description}>
+        //             Presale has started!!! If your address is whitelisted, Mint a
+        //             Crypto Dev
+        //         </div>
+        //         <button className={styles.button} onClick={presaleMint}>
+        //             Presale Mint
+        //         </button>
+        //         </div>
+        //     );
+        //     }
 
-        if (presaleStarted && presaleEnded){
+        // if (presaleStarted && presaleEnded){
+        else{
             return (
                 <button className={styles.button} onClick={publicMint}>
                     Mint
