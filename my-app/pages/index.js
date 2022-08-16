@@ -298,9 +298,9 @@ export default function Home() {
             );
         }
     
-        // if (loading) {
-        //     return <button className={styles.button}>Loading...</button>;
-        // }
+        if (loading) {
+            return <button className={styles.button}>Loading...</button>;
+        }
 
         // if (isOwner && !presaleStarted) {
         //     return (
