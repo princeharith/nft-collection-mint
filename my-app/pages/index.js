@@ -264,7 +264,7 @@ export default function Home() {
             //     checkIfPresaleEnded();
             // }
 
-            // getTokenIDsMinted();
+            getTokenIDsMinted();
 
 
             // //interval every 5 secs that checks if presale ended
@@ -298,9 +298,9 @@ export default function Home() {
             );
         }
     
-        if (loading) {
-            return <button className={styles.button}>Loading...</button>;
-        }
+        // if (loading) {
+        //     return <button className={styles.button}>Loading...</button>;
+        // }
 
         // if (isOwner && !presaleStarted) {
         //     return (
