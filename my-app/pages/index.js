@@ -62,6 +62,17 @@ export default function Home() {
                 abi,
                 signer
             );
+            
+            //getting the ether balance of the account
+            const accountBalance = await signer.getBalance();
+
+            const formattedAccountBalance = utils.formatEther(accountBalance.toString());
+            
+            if (formattedAccountBalance < .01){
+                window.alert("This account's ether balance is too low. Please go to the following faucet: https://faucet.polygon.technology/ and add ether.");
+            }
+
+            console.log(utils.formatEther(accountBalance.toString()));
 
             const tx = await whitelistContract.mint({
                 value: utils.parseEther("0.01")
@@ -70,7 +81,10 @@ export default function Home() {
 
             await tx.wait();
             setLoading(false);
-            window.alert("You've succesfully minted a Crypto Dev!");
+
+            const currTokenId =  await getTokenIDsMinted();
+            
+            window.alert("You've succesfully minted a Crypto Dev! Check it out at https://testnets.opensea.io/assets/mumbai/0xf3a56c9fc62f37e943b7bb41343c02659d2ca941/"+currTokenId);
         } catch (err) {
             console.log(err);
         }
@@ -199,6 +213,9 @@ export default function Home() {
 
             //convert the 'Big Number' to a string
             setTokenIdsMinted(_tokenIds.toString());
+            console.log(_tokenIds.toString());
+
+            return _tokenIds.toString();
         } catch(err) {
             console.log("cant find provider")
             console.log(err);
@@ -318,7 +335,7 @@ export default function Home() {
         if (presaleStarted && presaleEnded){
             return (
                 <button className={styles.button} onClick={publicMint}>
-                    Public Mint
+                    Mint
                 </button>
             );
         }
@@ -338,9 +355,9 @@ export default function Home() {
                     {/* <div className={styles.description}>
                         An NFT collection for my fellow Crypto Developers
                     </div> */}
-                    {/* <div className={styles.description}>
+                    { <div className={styles.description}>
                         {tokenIdsMinted}/20 PT NFTs have been minted so far
-                    </div> */}
+                    </div>}
                     <div className={styles.container}>
                     {renderButton()}
                     </div>
